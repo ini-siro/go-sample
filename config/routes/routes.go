@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"go-sample/controller/pingController"
-	"go-sample/controller/postsController"
+	"app/controller/pingController"
+	"app/controller/postsController"
 	"net/http"
 )
 

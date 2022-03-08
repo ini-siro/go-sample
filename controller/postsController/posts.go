@@ -1,6 +1,8 @@
 package postsController
 
 import (
+	"app/model/postModel"
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -17,9 +19,12 @@ func Posts(w http.ResponseWriter, r *http.Request) {
 }
 
 func Create(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Create Posts!!")
+	postModel.CreatePost(r.URL.Query()["message"][0])
+	fmt.Fprint(w, "Create Complete")
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Posts!!")
+	posts := postModel.GetPosts()
+	encoder := json.NewEncoder(w)
+	encoder.Encode(posts)
 }
